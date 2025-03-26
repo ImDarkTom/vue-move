@@ -1,8 +1,20 @@
 {
-  "name": "vue-move",
-  "version": "0.0.0",
-  "private": true,
-  "type": "module",
+  "name": "vue-move-directives",
+  "version": "1.0.0",
+  "description": "A set of Vue 3 directives to animate elements moving to other elements.",
+  "homepage": "https://github.com/ImDarkTom/vue-move#readme",
+  "bugs": {
+    "url": "https://github.com/ImDarkTom/vue-move/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ImDarkTom/vue-move.git"
+  },
+  "license": "AGPL-3.0-only",
+  "author": "ImDarkTom",
+  "type": "commonjs",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "prepublishOnly": "tsc"
   },
@@ -10,5 +22,16 @@
     "mitt": "^3.0.1",
     "nanoid": "^5.1.5",
     "vue": "^3.5.13"
-  }
+  },
+  "devDependencies": {
+    "tsc": "^2.0.4"
+  },
+  "keywords": [
+    "vue",
+    "vue3",
+    "directives",
+    "animation",
+    "move",
+    "transition"
+  ]
 }
