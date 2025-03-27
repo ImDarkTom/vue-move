@@ -38,7 +38,9 @@ export const mover = (emitter: Emitter<any>) => <Directive<
                 el.style.transform = `translate(${translateX}px, ${translateY}px)`;
 
                 setTimeout(() => {
-                    binding.value.afterClick(clickEvent!);
+                    if (binding.value.afterClick) {
+                        binding.value.afterClick(clickEvent!);
+                    }
 
                     if (binding.value.deleteAfterFinish) {
                         el.remove();
