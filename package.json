@@ -1,6 +1,6 @@
 {
   "name": "vue-move-directives",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "A set of Vue 3 directives to animate elements moving to other elements.",
   "homepage": "https://github.com/ImDarkTom/vue-move#readme",
   "bugs": {
