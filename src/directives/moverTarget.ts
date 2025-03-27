@@ -1,7 +1,7 @@
 import { Emitter } from "mitt";
 import { Directive } from "vue";
 
-export const moveTarget = (emitter: Emitter<any>) => <Directive<
+export const moverTarget = (emitter: Emitter<any>) => <Directive<
     HTMLElement & { _cleanup?: () => void },
     string
 >>{

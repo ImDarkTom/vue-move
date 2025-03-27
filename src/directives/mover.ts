@@ -2,17 +2,27 @@ import { Emitter } from "mitt";
 import { nanoid } from "nanoid";
 import { Directive } from "vue";
 
-export const moveTo = (emitter: Emitter<any>) => <Directive<
+type TimingFunctions = 'ease' | 'linear' | 'ease-in' | 'ease-out' | 'ease-in-out' | string;
+
+export const mover = (emitter: Emitter<any>) => <Directive<
     HTMLElement & { _cleanup?: () => void }, 
     { 
         target: string | ((e: MouseEvent) => string), 
         afterClick: (e: MouseEvent) => any,
-        durationMs?: number,
+        transition?: {
+            durationMs?: number,
+            timingFunction?: TimingFunctions,
+            zIndex: number,
+        }
         deleteAfterFinish?: boolean,
     }
 >
 > {
     mounted(el, binding) {
+        const transitionDurationSec = ( binding.value.transition?.durationMs || 300 ) / 1000;
+        const timingFunction = binding.value.transition?.timingFunction || 'ease-out';
+        const zIndex = String(binding.value.transition?.zIndex) || '1000';
+
         const moveCallbackListener = (event: { elementId: string, x: number, y: number }) => {
             if (event.elementId === elementId) {
                 const { x: fromX, y: fromY } = el.getBoundingClientRect();
@@ -23,8 +33,8 @@ export const moveTo = (emitter: Emitter<any>) => <Directive<
 
                 position = { x: translateX, y: translateY };
 
-                el.style.zIndex = '1000';
-                el.style.transition = `transform ${transitionDurationSec}s ease-out`;
+                el.style.zIndex = zIndex;
+                el.style.transition = `transform ${transitionDurationSec}s ${timingFunction}`;
                 el.style.transform = `translate(${translateX}px, ${translateY}px)`;
 
                 setTimeout(() => {
@@ -37,7 +47,6 @@ export const moveTo = (emitter: Emitter<any>) => <Directive<
             }
         };
 
-        const transitionDurationSec = ( binding.value.durationMs || 300 ) / 1000;
         const elementId = nanoid();
         let position = { x: 0, y: 0 };
 
