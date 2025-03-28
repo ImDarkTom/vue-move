@@ -4,18 +4,20 @@ import { Directive } from "vue";
 
 type TimingFunctions = 'ease' | 'linear' | 'ease-in' | 'ease-out' | 'ease-in-out' | string;
 
+export interface MoverOptions { 
+    target: string | ((e: MouseEvent) => string), 
+    afterClick: (e: MouseEvent) => any,
+    transition?: {
+        durationMs?: number,
+        timingFunction?: TimingFunctions,
+        zIndex: number,
+    }
+    deleteAfterFinish?: boolean,
+};
+
 export const mover = (emitter: Emitter<any>) => <Directive<
     HTMLElement & { _cleanup?: () => void }, 
-    { 
-        target: string | ((e: MouseEvent) => string), 
-        afterClick: (e: MouseEvent) => any,
-        transition?: {
-            durationMs?: number,
-            timingFunction?: TimingFunctions,
-            zIndex: number,
-        }
-        deleteAfterFinish?: boolean,
-    }
+    MoverOptions
 >
 > {
     mounted(el, binding) {
