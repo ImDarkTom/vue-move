@@ -21,7 +21,7 @@ export const mover = (emitter: Emitter<any>) => <Directive<
     mounted(el, binding) {
         const transitionDurationSec = ( binding.value.transition?.durationMs || 300 ) / 1000;
         const timingFunction = binding.value.transition?.timingFunction || 'ease-out';
-        const zIndex = String(binding.value.transition?.zIndex) || '1000';
+        const zIndex = binding.value.transition?.zIndex;
 
         const moveCallbackListener = (event: { elementId: string, x: number, y: number }) => {
             if (event.elementId === elementId) {
@@ -33,7 +33,10 @@ export const mover = (emitter: Emitter<any>) => <Directive<
 
                 position = { x: translateX, y: translateY };
 
-                el.style.zIndex = zIndex;
+                if (zIndex) {
+                    el.style.zIndex = String(zIndex);
+                }
+
                 el.style.transition = `transform ${transitionDurationSec}s ${timingFunction}`;
                 el.style.transform = `translate(${translateX}px, ${translateY}px)`;
 
