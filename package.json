@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/ImDarkTom/vue-move.git"
   },
-  "license": "AGPL-3.0-only",
+  "license": "MIT",
   "author": "ImDarkTom",
   "type": "commonjs",
   "main": "./lib/index.js",
