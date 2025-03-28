@@ -3,7 +3,7 @@ A set of Vue 3 directives to animate elements moving to other elements.
 
 ![Demo Video](https://github.com/user-attachments/assets/abee678b-e5d6-4c31-9fdc-e2dfcff6fc65)
 
-[Link to demo](https://github.com/ImDarkTom/vue-move-directives-demo)
+[Link to demo](https://vue-move-directives-demo.vercel.app/)
 
 ## Highlights
 - **🌿 Simple**: Adds `v-mover` and `v-mover-target` to easily set which elements to move/move to.
