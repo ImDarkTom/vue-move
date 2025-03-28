@@ -1,3 +1,4 @@
+.github/
 src/
 package-lock.json
 tsconfig.json
